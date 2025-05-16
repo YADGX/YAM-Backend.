@@ -11,23 +11,36 @@
 - Doctor can either accept or decline the requests
 - Ones the doctor accept a request he is commited to review the request before accepting any other
 
-## ERD
+## Entity Relationship Diagram (ERD)
 
-| **Entity**     | **Attributes**                                                                                                                  |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| **User**       | UserID (PK), Name, Email, Password, Role (User/Doctor)                                                                          |
-| **Doctor**     | DoctorID (PK), Name, Specialization, Email, Password                                                                            |
-| **Request**    | RequestID (PK), Title, DetailedComment, SummaryComment, Date, Status (Pending, Accepted, Completed), UserID (FK), DoctorID (FK) |
-| **Review**     | ReviewID (PK), Rating (1-5), Comment, UserID (FK), DoctorID (FK), RequestID (FK)                                                |
-| **Attachment** | AttachmentID (PK), FileURL, RequestID (FK)                                                                                      |
+### Entities and Attributes
 
-## Relations
+| Entity      | Attributes                                                       | Description                                         |
+|-------------|-----------------------------------------------------------------|-----------------------------------------------------|
+| **User**    | UserID (PK), Name, Email, Password, Role (user, doctor, admin) | All users, including regular users, doctors, and admins |
+| **Doctor**  | DoctorID (PK), UserID (FK), Specialization, SCFHS_Certificate_ID, Status (Pending, Approved, Declined) | Doctor-specific data linked to User account         |
+| **Request** | RequestID (PK), Title, DetailedComment, SummaryComment, DatePosted, Status (Pending, Accepted, Done), UserID (FK), DoctorID (FK, nullable) | Review requests posted by users                      |
+| **Review**  | ReviewID (PK), Rating (1-5), Comment, UserID (FK), DoctorID (FK), RequestID (FK, unique) | User ratings and comments for doctors after request completion |
+| **Attachment** | AttachmentID (PK), FileURL, RequestID (FK)                  | Files attached to requests                           |
 
-| **From Entity** | **To Entity**  | **Cardinality** |
-| --------------- | -------------- | --------------- |
-| **User**        | **Request**    | 1\:M            |
-| **Doctor**      | **Request**    | M:1             |
-| **Request**     | **Attachment** | 1\:M            |
-| **User**        | **Review**     | M:1             |
-| **Doctor**      | **Review**     | M:1             |
+### Relationships
+
+| From Entity | To Entity | Relationship Type             | Description                                                    |
+|-------------|-----------|------------------------------|----------------------------------------------------------------|
+| User        | Request   | One-to-Many                  | A user can post many requests                                  |
+| User        | Review    | One-to-Many (one review per request) | A user can submit one review per completed request            |
+| Doctor      | User      | One-to-One                   | Each doctor is linked to exactly one user account             |
+| Doctor      | Request   | One-to-Many                  | A doctor can accept multiple requests (one at a time)         |
+| Request     | Doctor    | Many-to-One (nullable)       | A request may be unassigned or assigned to one doctor         |
+| Request     | Attachment| One-to-Many                  | A request can have multiple attachments                        |
+| Doctor      | Review    | One-to-Many                  | A doctor can receive multiple reviews                          |
+
+### Business Rules
+
+| Rule                                                  | Explanation                                                               |
+|-------------------------------------------------------|---------------------------------------------------------------------------|
+| Admin must approve doctor registration before active use | New doctor registrations are pending admin approval                      |
+| A doctor can only accept one request at a time        | A Doctor must complete the current request before accepting another            |
+| A user can review a doctor only once per completed request | Duplicate reviews per request are not allowed                            |
+
 
