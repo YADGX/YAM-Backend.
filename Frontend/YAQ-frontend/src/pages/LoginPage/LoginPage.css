@@ -1,0 +1,136 @@
+/* General styling for the page */
+.center-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  width: 700px;
+  background: linear-gradient(135deg, #ffe0c3, #ffc1a1);
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+h2.login-title {
+  margin-bottom: 20px;
+  color: #3c4e69;
+  text-align: center;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #ff8c42;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  background-color: #3c4e69;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: black;
+}
+
+/* Links Styling */
+.form-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.register-link,
+.forgot-password-link {
+  font-size: 14px;
+}
+
+.register-link a,
+.forgot-password-link a {
+  color: #3c4e69;
+  text-decoration: none;
+}
+
+.register-link a:hover,
+.forgot-password-link a:hover {
+  color: blue;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+/* Dark and light mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+body.light-mode {
+  background-color: #ececec;
+  color: #000;
+}
+
+/* Responsive Design: Make sure layout works well on small screens */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 1rem;
+  }
+
+  form {
+    width: 100%; /* Make form take full width on small screens */
+  }
+
+  .login-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

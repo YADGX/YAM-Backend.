@@ -1,0 +1,215 @@
+/* Navbar Styles */
+.dashboard-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3c4e69; /* Set background color */
+  color: white;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001; /* Ensure it's always on top */
+}
+
+/* Left section: Hamburger Menu and Navigation Links */
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for hamburger */
+.hamburger:hover div {
+  background-color: #a6a6a6;
+}
+
+/* App Name and Logo */
+.app-name {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s ease;
+}
+
+.app-name:hover {
+  color: #a6a6a6;
+}
+
+.app-name-link {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+/* Navigation Links */
+nav ul {
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+nav ul li a:hover {
+  color: #8e98a6;
+}
+
+/* Right section: Profile Picture Container and Buttons */
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Profile Picture Container */
+.profile-pic-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #3c4e69;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.profile-pic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Dropdown Menu for SignUp and Login */
+.profile-dropdown {
+  position: absolute;
+  top: 50px; /* Adjust based on the container size */
+  /* right: 0; */
+  background-color: #3c4e69;
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 100;
+}
+
+/* Show dropdown when .show-dropdown is added */
+.profile-pic-container.show-dropdown .profile-dropdown {
+  display: flex;
+}
+
+/* Styling for dropdown buttons */
+.profile-dropdown a {
+  color: white;
+  font-weight: 250;
+  text-decoration: none;
+}
+
+.profile-dropdown a:hover {
+  color: #8e98a6;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  background-color: #99a7bb;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #2f3d55;
+}
+
+.dark-mode-toggle.dark {
+  background-color: #333;
+  color: #ffd700;
+}
+
+/* Make sure the main content doesn't overlap with the navbar */
+.dashboard-layout {
+  padding-top: 60px; /* Give space at the top for the navbar */
+}
+
+/* Sidebar Toggle and Links */
+.sidebar-open .dashboard-main {
+  margin-left: 200px;
+}
+
+/* Responsive Design: for small screens, make adjustments to layout */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .app-name {
+    font-size: 1.2rem;
+  }
+
+  .hamburger {
+    font-size: 1.8rem;
+  }
+
+  .header-right {
+    margin-left: 0;
+    gap: 0.5rem;
+  }
+
+  .profile-pic {
+    width: 30px;
+    height: 30px;
+  }
+}

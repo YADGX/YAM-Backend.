@@ -1,0 +1,166 @@
+.dashboard-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3c4e69;
+  color: white;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+.app-name {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dark-mode-toggle {
+  background-color: #3c4e69;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: -200px;
+  width: 150px;
+  height: calc(100% - 60px);
+  background-color: #222;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.logout-btn {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dashboard-main {
+  margin-top: 60px;
+  padding: 2rem;
+  background-color: #f4f4f4;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.dashboard-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.user-requests {
+  margin-top: 2rem;
+}
+
+.requests-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.requests-table th, .requests-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.requests-table th {
+  background-color: #3c4e69;
+  color: white;
+}
+
+.requests-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.accept-btn, .deny-btn {
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.accept-btn {
+  background-color: green;
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: darkgreen;
+}
+
+.deny-btn {
+  background-color: red;
+  color: white;
+}
+
+.deny-btn:hover {
+  background-color: darkred;
+}
+
+.dashboard-footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #3c4e69;
+  color: white;
+  margin-top: auto;
+}
