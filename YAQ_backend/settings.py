@@ -26,13 +26,25 @@ SECRET_KEY = 'django-insecure-10r#z=aa1$326z_2690!=qgnd)tn@l(0=47crc#eub&1nsk@lb
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ----------------------------------------------
+CORS_ALLOW_ALL_ORIGINS=False
+CORS_ALLOW_HEADERS = '*'
+CORS_ALLOWED_ORIGINS=[
+    "http://localhost:5173"
+]
 
 
+
+AUTH_USER_MODEL = 'main_app.User'
+
+# -----------------------------------------------
 # Application definition
 
 INSTALLED_APPS = [
     'main_app',
     'rest_framework',
+    'rest_framework_simplejwt',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +53,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
